@@ -1,0 +1,57 @@
+<h1>Listing sales</h1>
+
+<script type="text/javascript">
+
+var arr3 = new Array();
+<% @sales.each_with_index do |data, i| %>
+  arr3[<%= i %>] = { Day: "<%= data.Day %>", Sales: <%= data.Sales %> };
+<%end%> 
+
+</script>
+
+<table>
+  <tr>
+    <th>Day</th>
+    <th>Sales</th>
+    <th>Location</th>
+    <th></th>
+  </tr>
+
+<% @sales.each do |sale| %>
+  <tr>
+    <td><%= sale.Day %></td>
+    <td><%= sale.Sales %></td>
+    <td><%= sale.Location %></td>
+    <td><%= link_to 'Show', sale %></td>
+ 
+  </tr>
+<% end %>
+</table>
+
+<script type="text/javascript">
+
+        window.onload = function () {
+            var chart = new AmCharts.AmSerialChart();
+            chart.dataProvider = arr3;
+            chart.categoryField = "Day";
+            chart.marginTop = 15;
+            chart.marginLeft = 55;
+            chart.marginRight = 15;
+            chart.marginBottom = 80;
+            chart.angle = 30;
+            chart.depth3D = 15;
+
+            var graph = new AmCharts.AmGraph();
+            graph.valueField = "Sales"
+            graph.type = "column";
+            graph.lineAlpha = 0;
+            graph.fillAlphas = 0.8;
+            chart.addGraph(graph);
+            chart.write('chartContainer');
+        }
+    </script>
+
+
+    <div id="chartContainer" style="width: 640px; height: 400px;"></div>
+
+
