@@ -1,0 +1,2 @@
+class Trucks < ActiveRecord::Base
+end

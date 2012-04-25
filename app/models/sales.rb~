@@ -1,3 +1,5 @@
 class Sales < ParseResource::Base
 	fields :Day, :Location, :Sales
+
+	validates_presence_of :Column1
 end

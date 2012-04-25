@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Nomad2::Application.initialize!
+Parsetest::Application.initialize!

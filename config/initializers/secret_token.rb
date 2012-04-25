@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Nomad2::Application.config.secret_token = '98f57fa1e65cb4c43caba8f4c8ee918eb916c76d62422782e8cedcf45070d24f1d6f5bb01469168123a2b64b4c22c9efca0b89d1ec4fb050a46f7fce6538478f'
+Parsetest::Application.config.secret_token = '42ab0b73571ef303787062bed25d8fbecb24ca67e30597b14094b2b22f8c77e55494be81cff9ce4c06f4026c67c8669ab46e9f1bf963e34fffe598a7d52cd3bd'

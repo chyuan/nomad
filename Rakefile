@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Nomad2::Application.load_tasks
+Parsetest::Application.load_tasks

@@ -1,0 +1,11 @@
+development:
+  app_id: FoX2hKFWtiUIWgt2mioFIJvwdwgy461XAS7n367S
+  master_key: eglV52uCpQsBI7vQ8FTZlvSji6jPG9lC74rOtOs3
+
+test:
+  app_id: FoX2hKFWtiUIWgt2mioFIJvwdwgy461XAS7n367S
+  master_key: eglV52uCpQsBI7vQ8FTZlvSji6jPG9lC74rOtOs3
+
+production:
+  app_id: FoX2hKFWtiUIWgt2mioFIJvwdwgy461XAS7n367S
+  master_key: eglV52uCpQsBI7vQ8FTZlvSji6jPG9lC74rOtOs3

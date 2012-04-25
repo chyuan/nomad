@@ -19,7 +19,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-gem "google_visualr", "~> 2.1.0" 
 gem 'googlecharts'
 gem 'jquery-rails'
 gem "parse_resource", "~> 1.7.1"

@@ -2,8 +2,10 @@
 
 one:
   Day: MyString
-  Sales: 1
+  Location: MyString
+  Sales: MyString
 
 two:
   Day: MyString
-  Sales: 1
+  Location: MyString
+  Sales: MyString
