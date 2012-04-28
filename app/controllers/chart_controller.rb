@@ -15,7 +15,7 @@ before_filter :bar_chart
   
 def bar_chart
   recent_table = GoogleVisualr::DataTable.new
-  recent_table.new_column('datetime', 'Date')
+ # recent_table.new_column('string', 'Date')
   recent_table.new_column('string', 'Location')
   # Make these read from check boxes for each product, then loop and create columns
   productArray = []
@@ -31,17 +31,19 @@ def bar_chart
     end
     recent_table.new_column(productArray[i], productArray[i + 1]) # add column for sale count for each product
   end
-  insertArray = []
+
   # Last 7 stops
   Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData.last(7).each do |stop|
-    insertArray.append(stop[0])
+    insertArray = []
+#    insertArray.append(stop[0])
     insertArray.append(stop[1])
     for i in 2..12
       if (1) then # same reference as above, temporary until selectable
         insertArray.append(stop[i][2])
       end
     end
-    recent_table.add_row(insertArray)
+   recent_table.add_row(insertArray)
+
   end
   opts = { :width => 800, :height => 400, :title => 'Company Performance', vAxis: {title: 'Year', titleTextStyle: {color: 'red'}} }
   @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
