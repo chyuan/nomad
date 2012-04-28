@@ -1,0 +1,12 @@
+<html>
+<head>
+</head>
+<img src= <%= @test %> />
+<div id='chart'></div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<%= render_chart @chart, 'chart' %>
+<%= render_chart @line, 'chart' %>
+
+</html>
