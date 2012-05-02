@@ -36,12 +36,13 @@ def bar_chart
   # Last 7 stops
   @products = Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData.first
   @location = []
+
   Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData.last(7).each do |stop|
     insertArray = []
 #    insertArray.append(stop[0])
     insertArray.append(stop[1])
     for i in 2..12
-      if (1) then # same reference as above, temporary until selectable
+       if (1) then # same reference as above, temporary until selectable
         insertArray.append(stop[i][2])
       end
     end

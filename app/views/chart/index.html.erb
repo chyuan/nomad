@@ -1,9 +1,6 @@
 <html>
 <head>
 </head>
-<img src= <%= @test %> />
-
-
 
 <div id='chart'></div>
 <div id='line'></div>
@@ -16,14 +13,15 @@
 <%= render_chart @line, 'line' %>
 <%= render_chart @table, 'table' %>
 
-
+<br>
 <div>
 	<label for="Locations[]">Locations:</label>
 <% @location.each do |location| %>
 	<br><%= check_box_tag 'Locations[]', location %> <%= location %>
 <%end%>
 </div>
-
+<%= submit_tag("Save Selection") %>
+<br><br>
 <div>
 	<label for="Products[]">Products:</label>
 <% @products.each_with_index do |product, index| %>
@@ -31,6 +29,8 @@
 		<br><%= check_box_tag 'Products[]', product[0] %> <%= product[0] %>
 	<%end%>
 <%end%>
+<br><%= submit_tag("Save Selection") %>
 </div>
+
 
 </html>
