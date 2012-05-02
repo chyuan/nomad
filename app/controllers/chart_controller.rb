@@ -31,8 +31,11 @@ def bar_chart
     end
     recent_table.new_column(productArray[i], productArray[i + 1]) # add column for sale count for each product
   end
+    
 
   # Last 7 stops
+  @products = Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData.first
+  @location = []
   Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData.last(7).each do |stop|
     insertArray = []
 #    insertArray.append(stop[0])
@@ -43,12 +46,15 @@ def bar_chart
       end
     end
    recent_table.add_row(insertArray)
-
+   @location.append(insertArray[0])
   end
   opts = { :width => 800, :height => 400, :title => 'Company Performance', vAxis: {title: 'Year', titleTextStyle: {color: 'red'}} }
   @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 
   @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)
+
+  table_opts   = { :showRowNumber => true }
+  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
 
 
 end

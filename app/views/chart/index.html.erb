@@ -2,12 +2,35 @@
 <head>
 </head>
 <img src= <%= @test %> />
+
+
+
 <div id='chart'></div>
 <div id='line'></div>
+<div id='table'></div>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
+
 <%= render_chart @chart, 'chart' %>
 <%= render_chart @line, 'line' %>
+<%= render_chart @table, 'table' %>
+
+
+<div>
+	<label for="Locations[]">Locations:</label>
+<% @location.each do |location| %>
+	<br><%= check_box_tag 'Locations[]', location %> <%= location %>
+<%end%>
+</div>
+
+<div>
+	<label for="Products[]">Products:</label>
+<% @products.each_with_index do |product, index| %>
+	<% if (index>1) then %>
+		<br><%= check_box_tag 'Products[]', product[0] %> <%= product[0] %>
+	<%end%>
+<%end%>
+</div>
 
 </html>
