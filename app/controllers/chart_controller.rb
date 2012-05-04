@@ -2,8 +2,11 @@ class ChartController < ApplicationController
 require 'googlecharts'
 
 before_filter :bar_chart
-  def index
-  end
+
+#def show_data
+#   @platforms = params[:platforms] || []
+#end
+
 
 #def make_graph 
 #	@test = Gchart.line_xy(:size => '500x600', 
@@ -14,6 +17,10 @@ before_filter :bar_chart
 #  end
   
 def bar_chart
+
+  @prod = params[:products] || []
+  @loc = params[:Locations] || []
+
   recent_table = GoogleVisualr::DataTable.new
  # recent_table.new_column('string', 'Date')
   recent_table.new_column('string', 'Location')
@@ -36,6 +43,7 @@ def bar_chart
   # Last 7 stops
   @products = Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData.first
   @location = []
+  
 
   Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData.last(7).each do |stop|
     insertArray = []

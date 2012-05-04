@@ -1,7 +1,8 @@
 Parsetest::Application.routes.draw do
   get "chart/index"
-
   get "home/index"
+  
+  post "chart/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

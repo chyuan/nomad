@@ -14,23 +14,34 @@
 <%= render_chart @table, 'table' %>
 
 <br>
-<div>
-	<label for="Locations[]">Locations:</label>
-<% @location.each do |location| %>
-	<br><%= check_box_tag 'Locations[]', location %> <%= location %>
-<%end%>
-</div>
-<%= submit_tag("Save Selection") %>
-<br><br>
-<div>
-	<label for="Products[]">Products:</label>
-<% @products.each_with_index do |product, index| %>
-	<% if (index>1) then %>
-		<br><%= check_box_tag 'Products[]', product[0] %> <%= product[0] %>
-	<%end%>
-<%end%>
-<br><%= submit_tag("Save Selection") %>
-</div>
 
+<!-- Filter out locations  -->
+<label for="Locations[]">Locations:</label>
+<%= form_tag('index', :action => 'bar_chart') do %>
+	<% @location.each do |location| %>
+		<br><%= check_box_tag 'Locations[]', location %> <%= location %>
+	<%end%><br>
+	<%= submit_tag("Save Selection") %>
+<%end%>
+<br><br>
+
+<!-- Test to see if filtering for location worked  -->
+<h2><%= @loc %></h2>
+
+
+<!-- Filter out products  -->
+<label for="Products[]">Products:</label>
+<%= form_tag('index', :action => 'bar_chart') do %>
+	<% @products.each_with_index do |product, index| %>
+		<% if (index>1) then %><br>
+			<%= check_box_tag 'products[]', product[0] %> <%= product[0] %>
+		<%end%>
+	<%end%>
+	<br><%= submit_tag("Save Selection") %>
+<%end%>
+<br><br>
+
+<!-- Test to see if filtering for products worked  -->
+<h2><%= @prod %></h2>
 
 </html>
