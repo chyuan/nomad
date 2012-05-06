@@ -18,8 +18,16 @@
 <!-- Filter out locations  -->
 <label for="Locations[]">Locations:</label>
 <%= form_tag('index', :action => 'bar_chart') do %>
+<!-- Filter out locations  -->
+	<label for="Locations[]">Locations:</label>
 	<% @location.each do |location| %>
-		<br><%= check_box_tag 'Locations[]', location %> <%= location %>
+		<br><%= check_box_tag 'Locations[]', location, (@loc.include? location) %> <%= location %>
+	<%end%><br>
+<!-- Filter out products  -->
+	<% @products.each_with_index do |product, index| %>
+		<% if (index>1) then %><br>
+			<%= check_box_tag 'products[]', product[0], (@prod.include? product[0]) %> <%= product[0] %>
+		<%end%>
 	<%end%><br>
 	<%= submit_tag("Save Selection") %>
 <%end%>
@@ -30,15 +38,7 @@
 
 
 <!-- Filter out products  -->
-<label for="Products[]">Products:</label>
-<%= form_tag('index', :action => 'bar_chart') do %>
-	<% @products.each_with_index do |product, index| %>
-		<% if (index>1) then %><br>
-			<%= check_box_tag 'products[]', product[0] %> <%= product[0] %>
-		<%end%>
-	<%end%>
-	<br><%= submit_tag("Save Selection") %>
-<%end%>
+
 <br><br>
 
 <!-- Test to see if filtering for products worked  -->

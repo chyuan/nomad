@@ -18,7 +18,8 @@ before_filter :bar_chart
   
 def bar_chart
 
-  @prod = params[:products] || []
+   @prod = params[:products] || ["C"]
+	 #  ["C", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas"]
   @loc = params[:Locations] || []
 
   recent_table = GoogleVisualr::DataTable.new
@@ -26,11 +27,9 @@ def bar_chart
   recent_table.new_column('string', 'Location')
   # Make these read from check boxes for each product, then loop and create columns
   productArray = []
-  for i in 0..10 # temporary until products are selectable in chart
-    if (1) then
-      productArray.append('number')
-      productArray.append('Product ' + i.to_s)
-    end
+  for i in @prod # temporary until products are selectable in chart
+    productArray.append('number')
+    productArray.append(i)
   end
   for i in 0..(productArray.length - 1)
     if i % 2 == 1 then
@@ -49,8 +48,8 @@ def bar_chart
     insertArray = []
 #    insertArray.append(stop[0])
     insertArray.append(stop[1])
-    for i in 2..12
-       if (1) then # same reference as above, temporary until selectable
+    for i in 2..16
+       if (@prod.include? stop[i][0]) then # same reference as above, temporary until selectable
         insertArray.append(stop[i][2])
       end
     end
