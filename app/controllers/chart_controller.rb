@@ -49,7 +49,7 @@ def bar_chart
 #    insertArray.append(stop[0])
     insertArray.append(stop[1])
     for i in 2..16
-       if (@prod.include? stop[i][0]) then # same reference as above, temporary until selectable
+       if (@prod.include? stop[i][1]) then # same reference as above, temporary until selectable
         insertArray.append(stop[i][2])
       end
     end
