@@ -18,7 +18,7 @@ before_filter :bar_chart
   
 def bar_chart
 
-   @prod = params[:products] || ["C"]
+   @prod = params[:products] || ["xFX1POZ8pk", "HmfeXkcgvV", "THHdrXIzVg", "M38kKa6woG", "T54XqH3S66", "8MMXu3IAe8", "0vpGB3QEis", "vd0nyCkUvD", "3mezwOZ7xw", "axRUHJFyiF", "1y1IJ8ohMS", "jsGy4qRVhc", "JQ62t1lBWm", "whMkqRZNdm"] 
 	 #  ["C", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas", "Chicken Empanadas"]
   @loc = params[:Locations] || []
 
