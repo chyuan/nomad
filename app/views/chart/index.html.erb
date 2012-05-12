@@ -16,8 +16,10 @@
 <br>
 
 <!-- Filter out locations  -->
+<%= DateTime.parse(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData[0][0].values[1])%>
 <label for="Locations[]">Locations:</label>
 <%= form_tag('index', :action => 'bar_chart') do %>
+
 <!-- Filter out locations  -->
 	<label for="Locations[]">Locations:</label>
 	<% @location.each do |location| %>
