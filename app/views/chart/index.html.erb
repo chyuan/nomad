@@ -2,6 +2,14 @@
 <head>
 </head>
 
+<div id="header">
+          <div class="nav">
+	      
+               <p> NOMAD</p><l><%= link_to '←Back', root_path %></l>
+          </div>
+     </div>
+</br><br>
+
 <div id='chart'></div>
 <div id='line'></div>
 <div id='table'></div>
@@ -9,28 +17,36 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
-<center><%= render_chart @line, 'line' %></center>
+<%= render_chart @line, 'line' %>
 
-<br>
+
 
 <!-- Filter out locations  -->
+
+<h6>Filtering Options</h6><br>
 
 <%= form_tag('index', :action => 'bar_chart') do %>
 
+
 <!-- Filter out locations  -->
-	<label for="Locations[]">Locations:</label>
+<fl>
+	<br>
+	<h1><label for="Locations[]">Locations:</label></h1><br>
 	<% @location.each do |location| %>
-		<br><%= check_box_tag 'Locations[]', location, (@loc.include? location) %> <%= location %>
-	<%end%><br>
+		<br><h2><%= check_box_tag 'Locations[]', location, (@loc.include? location) %> <%= location %></h2>
+	<%end%><br><br><h2>	<%= submit_tag("Save Selection") %></h2></fl>
 <!-- Filter out products  -->
-    <br><label for="products[]">Products:</label>
+   <fl><h4><label for="products[]">Menu Items:</label></h4><br><br>
 	<% @products.each_with_index do |product, index| %>
 		<% if (index>1) then %><br>
-			<%= check_box_tag 'products[]', product[1], (@prod.include? product[1]) %> <%= product[0] %>
-		<%end%>
-	<%end%><br>
-	<%= submit_tag("Save Selection") %>
+			<h3><%= check_box_tag 'products[]', product[1], (@prod.include? product[1]) %> <%= product[0] %></h3>
+		<%end%> 
+	<%end%><br><br><h5><%= submit_tag("Save Selection") %></h5></fl>
+
+
 <%end%>
+
+
 <br><br>
 
 

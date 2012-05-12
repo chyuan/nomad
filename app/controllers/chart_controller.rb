@@ -113,7 +113,7 @@ test = timeparse.match(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesD
     previousdate = date
   end
 
-  opts = { :width => 1000, :height => 600, :title => 'Recent Sales Trends', vAxis: {title: 'Items Sold', titleTextStyle: {color: 'red'}}, hAxis: {title: 'Date', titleTextStyle: {color: 'red'}} }
+  opts = { :width => 1000, :height => 600, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
   @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 
   @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)

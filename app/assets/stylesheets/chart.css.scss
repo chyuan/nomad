@@ -1,3 +1,148 @@
 // Place all the styles related to the chart controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@font-face {
+font-family: Cabin;
+src: url('type/cabin.ttf'),
+	 url('cabin.eot');
+}
+
+h {
+  color: #000;
+  font-family: Cabin;
+  font-size: 30px;
+  font-weight: bold;
+  display: inline;
+}
+
+
+h1 {
+  color: #0c7ac4;
+  font-family: Cabin;
+  font-size: 24px;
+  margin-bottom: -28px;
+  font-weight: bold;
+  display: inline;
+  float: left;
+  margin-left: 300px;
+}
+
+
+h6 {
+  color: #000;
+  font-family: Cabin;
+  font-size: 24px;
+  margin-bottom: -28px;
+  font-weight: bold;
+  margin-top: -7px;
+  margin-left: 400px;
+}
+
+h4 {
+  color: #0c7ac4;
+  font-family: Cabin;
+  font-size: 24px;
+  margin-bottom: -28px;
+  font-weight: bold;
+  float: left;
+  margin-left: 100px;
+}
+
+h2 {
+  color: #000000;
+  font-family: Cabin;
+  font-size: 16px;
+  margin-bottom: -28px;
+  text-transform: none;
+  float: left;
+  margin-left: 300px;
+  display: inline;
+}
+
+h3 {
+  color: #000000;
+  font-family: Cabin;
+  font-size: 16px;
+  margin-bottom: -28px;
+  text-transform: none;
+  float: left;
+  margin-left: 100px;
+  display: inline;
+}
+
+h5 {
+	margin-left: 95px;
+}
+
+
+fl {
+	float: left;
+}
+
+.nav a:link {color: #FFFFFF; font-family: Cabin; text-decoration: none; font-size: 17px;}
+.nav a:visited {color: #FFF; font-family: Cabin; text-decoration: none; font-size: 17px;}
+.nav a:hover {color: #000; font-family: Cabin; text-decoration: none; font-size: 17px;}
+.nav a:active {color: #FFF; font-family: Cabin; text-decoration: none; font-size: 17px;}
+
+.button a:link {color: #fff; font-family: Cabin; text-transform: none; text-decoration: none; font-size: 18px;}
+.button a:visited {color: #fff; font-family: Cabin; text-transform: none; text-decoration: none; font-size: 18px;}
+
+.button {
+	border-top: 1px solid #96d1f8;
+  background: #0e4b73;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0c7ac4), to(#0e4b73));
+  background: -webkit-linear-gradient(top, #0c7ac4, #0e4b73);
+  background: -moz-linear-gradient(top, #0c7ac4, #0e4b73);
+  background: -ms-linear-gradient(top, #0c7ac4, #0e4b73);
+  background: -o-linear-gradient(top, #0c7ac4, #0e4b73);
+  padding: 5.5px 11px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+  -webkit-box-shadow: black 0 1px 0;
+  -moz-box-shadow: black 0 1px 0;
+  box-shadow: black 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: white;
+	font-family:Cabin;
+	font-size:15px;
+	font-weight:normal;
+	padding:6px 24px;
+	text-decoration:none;
+	width: 300px;
+}.button:hover {
+	border-top-color: #002c4a;
+	  background: #002c4a;
+	  color: #ccc;
+}.button:active {
+	position:relative;
+	top:1px;
+}
+
+
+.nav {
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 30px;
+  font-family: Cabin;
+  color: #fff;
+  background: #0c7ac4;
+  font-size: 1em;
+p {
+	color: #fff;
+	font-size: 23px;
+	margin-top: 9px;
+	margin-left: 3px;
+	display: inline;
+}
+l {
+	float: right;
+	display: inline;
+	margin-top: 5px;
+	margin-right: 15px;
+}
+}
