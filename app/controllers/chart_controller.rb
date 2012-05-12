@@ -55,22 +55,11 @@ def bar_chart
       end
     end
    
+timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the string datetime
+test = timeparse.match(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData[0][0].values[1])
 
-   #This makes the prodNum dictionary (ID => Items Sold)
-   @TruckData.last(7).each do |stop|
-     if (@loc.include? stop[1])
-       stop.each_with_index do |product, index|
-         if (index > 1)
-           if @prodNum.has_key?(product[1])
-             @prodNum[product[1]] = @prodNum[product[1]] + product[2]
-           else
-             @prodNum[product[1]] = product[2]
-           end
-         end
-       end
-     end
-   end
-
+    
+             
 #Makes the table elements
   recent_table = GoogleVisualr::DataTable.new
   recent_table.new_column('string', 'Date')
@@ -88,28 +77,43 @@ def bar_chart
     recent_table.new_column(productArray[i], productArray[i + 1]) # add column for sale count for each product
   end
   
-  insertArray = []  
-  for key in @prodNum.keys
-    if @prod.include? key
+  #This makes the prodNum dictionary (ID => Items Sold)
+  date = ""
+  previousdate = ""
+  @TruckData.each do |stop|
+    insertArray = []
+    @prodNum = {}
+    date = timeparse.match(stop[0].values[1]).to_s()
+    if previousdate != date
+      @TruckData.each do |stop2| #lol N^2
+        ndate = timeparse.match(stop2[0].values[1]).to_s()
+        if date == ndate
+          if (@loc.include? stop2[1])
+            stop2.each_with_index do |product, index|
+              if (index > 1)
+                if @prodNum.has_key?(product[1])
+                  @prodNum[product[1]] = @prodNum[product[1]] + product[2]
+                else
+                  @prodNum[product[1]] = product[2]
+                end
+              end
+            end
+          end
+        end
+      end
+    if @prodNum != {}
+      insertArray.append(date)
+      for key in @prod
+        insertArray.append(@prodNum[key])
+        @test = @prodNum
+      end
+      recent_table.add_row(insertArray)
     end
+    end
+    previousdate = date
   end
- # @TruckData.each do |stop|
-  #  insertArray = []
-#    insertArray.append(stop[0])
-  #  if @loc.include? stop[1]
-  #    insertArray.append(stop[1])
-   #   for i in 2..@prod.length+1 #@prod.length+1 because go from 2 to length - 1 but @prod doesnt include the first two values (index>1)
-    #      if (@prod.include? stop[i][1]) then # Compares product ID from @prod and the truckdata
-     #      insertArray.append(stop[i][2])
-      #   else
-       #    insertArray.append(0)
-        #  end
-    #  end
-     # recent_table.add_row(insertArray)
-    #end
- #  @location.append(insertArray[0])
- #end
-  opts = { :width => 800, :height => 400, :title => 'Company Performance', vAxis: {title: 'Year', titleTextStyle: {color: 'red'}} }
+
+  opts = { :width => 1000, :height => 600, :title => 'Recent Sales Trends', vAxis: {title: 'Items Sold', titleTextStyle: {color: 'red'}}, hAxis: {title: 'Date', titleTextStyle: {color: 'red'}} }
   @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 
   @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)
@@ -138,3 +142,24 @@ end
   end
 end
 =end
+
+=begin
+  #add elements to our dictionary
+  if (@loc.include? stop[1])
+    stop.each_with_index do |product, index|
+      if (index > 1)
+        @prodNum[product[1]] = @prodNum[product[1]] + product[2] 
+      end
+    end
+  end
+else
+  previousdate = date
+  #remake dictionary
+  if (@loc.include? stop[1])
+    stop.each_with_index do |product, index|
+      if (index > 1)
+          @prodNum[product[1]] = product[2]
+      end
+    end
+  end
+=end #might be off by an end

@@ -9,15 +9,12 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
-<%= render_chart @chart, 'chart' %>
-<%= render_chart @line, 'line' %>
-<%= render_chart @table, 'table' %>
+<center><%= render_chart @line, 'line' %></center>
 
 <br>
 
 <!-- Filter out locations  -->
-<%= DateTime.parse(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData[0][0].values[1])%>
-<label for="Locations[]">Locations:</label>
+
 <%= form_tag('index', :action => 'bar_chart') do %>
 
 <!-- Filter out locations  -->
@@ -26,6 +23,7 @@
 		<br><%= check_box_tag 'Locations[]', location, (@loc.include? location) %> <%= location %>
 	<%end%><br>
 <!-- Filter out products  -->
+    <br><label for="products[]">Products:</label>
 	<% @products.each_with_index do |product, index| %>
 		<% if (index>1) then %><br>
 			<%= check_box_tag 'products[]', product[1], (@prod.include? product[1]) %> <%= product[0] %>
@@ -35,15 +33,5 @@
 <%end%>
 <br><br>
 
-<!-- Test to see if filtering for location worked  -->
-<h2><%= @loc %></h2>
-
-
-<!-- Filter out products  -->
-
-<br><br>
-
-<!-- Test to see if filtering for products worked  -->
-<h2><%= @prod %></h2>
 
 </html>
