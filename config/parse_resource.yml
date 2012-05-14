@@ -1,11 +1,11 @@
 development:
-  app_id: Muso8IFDYAukQ92C6PA6s307V1Tk4vUYoKu0oNss
-  master_key: yNSU7hdggeDRlayaOaQHrWoiT9Gfs5ujCu47rsVG
+  app_id: FoX2hKFWtiUIWgt2mioFIJvwdwgy461XAS7n367S
+  master_key: eglV52uCpQsBI7vQ8FTZlvSji6jPG9lC74rOtOs3
 
 test:
-  app_id: Muso8IFDYAukQ92C6PA6s307V1Tk4vUYoKu0oNss
-  master_key: yNSU7hdggeDRlayaOaQHrWoiT9Gfs5ujCu47rsVG
+  app_id: FoX2hKFWtiUIWgt2mioFIJvwdwgy461XAS7n367S
+  master_key: eglV52uCpQsBI7vQ8FTZlvSji6jPG9lC74rOtOs3
 
 production:
-  app_id: Muso8IFDYAukQ92C6PA6s307V1Tk4vUYoKu0oNss
-  master_key: yNSU7hdggeDRlayaOaQHrWoiT9Gfs5ujCu47rsVG
+  app_id: FoX2hKFWtiUIWgt2mioFIJvwdwgy461XAS7n367S
+  master_key: eglV52uCpQsBI7vQ8FTZlvSji6jPG9lC74rOtOs3
