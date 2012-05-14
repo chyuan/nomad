@@ -2,6 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
+    # Heroku : 
+    group :production do 
+      gem 'thin' 
+      gem 'pg' 
+    end 
+
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
