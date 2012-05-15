@@ -65,7 +65,10 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
 #Makes the table elements
   recent_table = GoogleVisualr::DataTable.new
   recent_table.new_column('string', 'Date')
-  avg_table = GoogleVisualr::DataTable.new
+ # avg_table = GoogleVisualr::DataTable.new
+  avg_table2 = GoogleVisualr::DataTable.new
+  avg_table2.new_column('string', 'Item')
+  avg_table2.new_column('number', 'Daily Avg')
   #recent_table.new_column('string', 'Location')
   # Make these read from check boxes for each product, then loop and create columns
   productArray = []
@@ -78,7 +81,11 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
       next
     end
     recent_table.new_column(productArray[i], productArray[i + 1]) # add column for sale count for each product
-    avg_table.new_column(productArray[i], productArray[i + 1])
+  #  avg_table.new_column(productArray[i], productArray[i + 1])
+    temp = []
+    temp.append(productArray[i+1])
+    temp.append(0)
+    avg_table2.add_row(temp)
   end
   
   #This makes the prodNum dictionary (ID => Items Sold)
@@ -132,23 +139,34 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
    end
  end
 
-insertarray = []
-@weeklytotal.each do |item|
-  insertarray.append(item[1].to_f/7)  
+
+
+#insertarray = []
+@weeklytotal.each_with_index do |item, i|
+  temp = (item[1].to_f/7*100).round/100.0
+#  insertarray.append(temp)  
+  avg_table2.set_cell(i,1,temp)
 end
-avg_table.add_row(insertarray)
+# avg_table.add_row(insertarray)
+
+
+  
+
+
  
 
-  opts = { :width => 1000, :height => 600, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
+  opts = { :width => 800, :height => 600, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
 #  @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 
 #  @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)
 
   @area = GoogleVisualr::Interactive::AreaChart.new(recent_table, opts)
 
-  table_opts   = { :showRowNumber => true }
+  table_opts   = { :showRowNumber => false}
   @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
-  @table2 = GoogleVisualr::Interactive::Table.new(avg_table, table_opts)
+
+  opts2 = { :width => 800, :height => 400, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Daily Avg', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Item', titleTextStyle: {color: '0c7ac4'}} }
+  @table2 = GoogleVisualr::Interactive::ColumnChart.new(avg_table2, opts2)
 
 end
 end
