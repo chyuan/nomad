@@ -60,7 +60,7 @@ def bar_chart
     end
    
 timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the string datetime
-@test = timeparse.match(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData[0][0].values[1])
+#@test = timeparse.match(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData[0][0].values[1])
 
 #Makes the table elements
   recent_table = GoogleVisualr::DataTable.new
