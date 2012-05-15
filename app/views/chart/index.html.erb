@@ -30,7 +30,7 @@
 		<br><h2><%= check_box_tag 'Locations[]', location, (@loc.include? location) %> <%= location %></h2>
 	<%end%><br><br><h2>	<%= submit_tag("Save Selection") %></h2></fl>
 <!-- Filter out products  -->
-   <fl style='position: absolute; left: 790px; top: 350px'>
+   <fl style='position: absolute; left: 790px; top: 390px'>
    <h4><label for="products[]">Menu Items:</label></h4><br><br>
 	<% @products.each_with_index do |product, index| %>
 		<% if (index>1) then %><br>
