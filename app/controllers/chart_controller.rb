@@ -29,7 +29,7 @@ def bar_chart
   @prod = params[:products] || [] #Whats been checked for products
   @loc = params[:Locations] || [] #Whats been checked for location
   @prodNum = {} #The keys are the product IDs, the values are the number of items sold 
-  
+  @weeklytotal = {} #The keys are product IDs, values are averages daily sales
   
   #Make location array BANDAID
   @TruckData.each do |stop|
@@ -65,6 +65,7 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
 #Makes the table elements
   recent_table = GoogleVisualr::DataTable.new
   recent_table.new_column('string', 'Date')
+  avg_table = GoogleVisualr::DataTable.new
   #recent_table.new_column('string', 'Location')
   # Make these read from check boxes for each product, then loop and create columns
   productArray = []
@@ -77,6 +78,7 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
       next
     end
     recent_table.new_column(productArray[i], productArray[i + 1]) # add column for sale count for each product
+    avg_table.new_column(productArray[i], productArray[i + 1])
   end
   
   #This makes the prodNum dictionary (ID => Items Sold)
@@ -115,6 +117,28 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
     previousdate = date
   end
 
+  # calculating the product averages from the recent table
+  @TruckData.each do |stop|
+   if (@loc.include? stop[1])
+     stop.each_with_index do |product, index|
+       if (index > 1)
+         if @weeklytotal.has_key?(product[1])
+           @weeklytotal[product[1]] = @weeklytotal[product[1]] + product[2]
+         else
+           @weeklytotal[product[1]] = product[2]
+         end
+       end
+     end
+   end
+ end
+
+insertarray = []
+@weeklytotal.each do |item|
+  insertarray.append(item[1].to_f/7)  
+end
+avg_table.add_row(insertarray)
+ 
+
   opts = { :width => 1000, :height => 600, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
 #  @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 
@@ -122,9 +146,9 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
 
   @area = GoogleVisualr::Interactive::AreaChart.new(recent_table, opts)
 
-#  table_opts   = { :showRowNumber => true }
-#  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
-
+  table_opts   = { :showRowNumber => true }
+  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
+  @table2 = GoogleVisualr::Interactive::Table.new(avg_table, table_opts)
 
 end
 end

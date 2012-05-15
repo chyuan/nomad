@@ -10,13 +10,17 @@
      </div>
 </br><br>
 
-<div id='line'></div>
 <div id='area'></div>
-<div id='table'></div>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 <%= render_chart @area, 'area' %>
+
+<h6>Daily Averages</h6><br><br>
+<div id='table2'></div>
+<%= render_chart @table2, 'table2' %>
+
+<br><br>
 
 <!-- Filter out locations  -->
 
