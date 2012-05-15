@@ -126,12 +126,14 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
   @TruckData.each do |stop|
    if (@loc.include? stop[1])
      stop.each_with_index do |product, index|
-       if (index > 1)
-         if @weeklytotal.has_key?(product[1])
-           @weeklytotal[product[1]] = @weeklytotal[product[1]] + product[2]
-         else
-           @weeklytotal[product[1]] = product[2]
-         end
+        if (@prod.include? product[1])
+         if (index > 1)
+           if @weeklytotal.has_key?(product[1])
+             @weeklytotal[product[1]] = @weeklytotal[product[1]] + product[2]
+           else
+             @weeklytotal[product[1]] = product[2]
+          end
+        end
        end
      end
    end
@@ -145,16 +147,18 @@ end
 
   opts = { :width => 800, :height => 400, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
 #  @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
-
 #  @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)
-
   @area = GoogleVisualr::Interactive::AreaChart.new(recent_table, opts)
 
-#  table_opts   = { :showRowNumber => false}
-#  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
-  
   opts2 = { :width => 800, :height => 400, :title => 'Daily Averages', :legend => 'none', vAxis: {title: 'Daily Avg', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Item', titleTextStyle: {color: '0c7ac4'}} }
   @table2 = GoogleVisualr::Interactive::ColumnChart.new(avg_table2, opts2)
+
+  table_opts   = { :showRowNumber => false}
+  @avgtable = GoogleVisualr::Interactive::Table.new(avg_table2, table_opts)
+#  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
+  
+  
+
 
 end
 end
