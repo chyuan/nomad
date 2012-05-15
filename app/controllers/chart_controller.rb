@@ -18,13 +18,14 @@ before_filter :bar_chart
   
 def bar_chart
   if session[:userID] == nil
-    session[:userID] =  'eDBqNUx1lc'
+#    session[:userID] =  'eDBqNUx1lc'
+    session[:userID] = '394demouser'
   end
   @uid = session[:userID]
   @TruckData = Trucks.where(:UserObjectID => @uid).all[0].SalesData
   @products = @TruckData.first #For initialization purposes only
   @prodName = {} #The keys are the products ID, the values are the product names
-  @location = [] 
+  @location = [] #An array of all the locations
   @prod = params[:products] || [] #Whats been checked for products
   @loc = params[:Locations] || [] #Whats been checked for location
   @prodNum = {} #The keys are the product IDs, the values are the number of items sold 
@@ -36,7 +37,7 @@ def bar_chart
       @location.append(stop[1])
     end
   end
-  #This chunk will automatically check all the check boxes if it defaults to zero
+  #This chunk will automatically check all the product check boxes if it defaults to zero
   if @prod == []  
     @products.each_with_index do |product, index|
       if (index > 1)
@@ -44,7 +45,7 @@ def bar_chart
       end
     end
   end
-  #This chunk will automatically check all the check boxes if it defaults to zero
+  #This chunk will automatically check all the location check boxes if it defaults to zero
   if @loc == []
     @TruckData.each do |stop|
       @loc.append(stop[1])
@@ -59,10 +60,8 @@ def bar_chart
     end
    
 timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the string datetime
-test = timeparse.match(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData[0][0].values[1])
+@test = timeparse.match(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesData[0][0].values[1])
 
-    
-             
 #Makes the table elements
   recent_table = GoogleVisualr::DataTable.new
   recent_table.new_column('string', 'Date')
@@ -117,12 +116,14 @@ test = timeparse.match(Trucks.where(:UserObjectID => 'eDBqNUx1lc').all[0].SalesD
   end
 
   opts = { :width => 1000, :height => 600, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
-  @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
+#  @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 
-  @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)
+#  @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)
 
-  table_opts   = { :showRowNumber => true }
-  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
+  @area = GoogleVisualr::Interactive::AreaChart.new(recent_table, opts)
+
+#  table_opts   = { :showRowNumber => true }
+#  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
 
 
 end
