@@ -1,6 +1,10 @@
 echo "Welcome to NomadAnalytics."
-echo "This module runs on Ruby on Rails, with a parse backend hosted on heroku."
+echo "This module runs on Ruby on Rails, with a Parse backend hosted on Heroku."
 echo "Run this bash script from the directory you want the app to be installed."
+echo "Please enter your desired Heroku application name, followed by [ENTER]"
+read appname
+echo "We will now install the Nomad Analytics application files onto your machine and deploy the application to $appname.heroku.com. This process will take several minutes."
+echo
 
 ## Checking requirements
 echo "Checking requirements..."
@@ -71,8 +75,6 @@ echo
 echo "Requirement check completed."
 echo
 echo "Cloning from github repository..."
-echo "Please enter your desired Heroku application name, followed by [ENTER]"
-read appname
 git clone git@github.com:chyuan/nomad.git $appname
 
 echo "Installing gems..."
