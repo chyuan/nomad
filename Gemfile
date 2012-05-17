@@ -8,6 +8,8 @@ gem 'rails', '3.2.2'
       gem 'pg' 
     end 
 
+gem 'heroku'
+
 gem 'therubyracer'
 
 # Bundle edge Rails instead:
