@@ -7,23 +7,17 @@ The deployment script "deploy.sh" assumes the following prerequisites. Other com
 
 Prerequisites:
 - Ruby 1.9.3
-- RVM 1.11.6
-- Rails 3.2.2
+- RVM 1.13.5
+- Rails 3.2.3
 - Bundler 1.1.3
-- git version 1.7.4.4
-- active heroku account
+- active Heroku account (instructions on how to set up Heroku on your machine are listed here: http://www.google.com/url?q=http%3A%2F%2Fruby.railstutorial.org%2Fruby-on-rails-tutorial-book%23sec%3A1.4.1)
 
-Once the above prerequisites have been met, perform the following to deploy:
+Perform the following to deploy:
 
 1) Download deploy.sh from git@github.com/chyuan/nomad.git
 
 2) Move "deploy.sh" to the directory in which you wish to locate the app folder.
 
-3) Run the script in that directory. 
+3) Navigate to the directory in step 2 and run the bash script by typing "bash deploy.sh"
 
-Note: If the heroku app name has already been taken, either:
-a) Delete the current instance of the app by running 'heroku apps:destroy nomadanalytics --confirm nomadanalytics'
-
-b) Deploy another instance on heroku. Edit the line 'heroku create yourappname' in 'deploy.sh', replacing yourappname with a name of your choice.
-
-
+4) Running this bash script will check to see if your machine has met all of the requirements, install the application files on your machine, and deploy the application to Heroku. When the script is complete, the Heroku application will open automatically. If your machine does not meet the prerequisites listed above, the bash script will automatically install everything for you. 
