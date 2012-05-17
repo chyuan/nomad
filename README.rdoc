@@ -1,7 +1,7 @@
-=== Welcome to NomadAnalytics ===
-
-=== Deployment Steps ===
+=== Welcome to NomadAnalytics
 This module runs on Ruby on Rails with a Parse.com backend, hosted on Heroku.
+
+=== Deployment Steps
 
 The deployment script "deploy.sh" assumes the following prerequisites. Other combinations might work but are not guaranteed. 
 
