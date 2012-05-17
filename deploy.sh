@@ -90,4 +90,6 @@ heroku create $appname
 git push heroku master
 
 echo "Deployment successful."
+echo
+echo "Opening $appname.heroku.com ..."
 heroku open
