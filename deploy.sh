@@ -71,13 +71,16 @@ echo
 echo "Requirement check completed."
 echo
 echo "Cloning from github repository..."
-appname=nomadanalytics
+echo "Please enter your desired Heroku application name, followed by [ENTER]"
+read appname
 git clone git@github.com:chyuan/nomad.git $appname
 
 echo "Installing gems..."
+
 cd $appname
 
 bundle install
+gem install heroku
 
 echo "Deploying to Heroku..."
 heroku apps:destroy $appname --confirm $appname
