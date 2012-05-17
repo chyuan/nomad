@@ -80,7 +80,6 @@ echo "Installing gems..."
 cd $appname
 
 bundle install
-gem install heroku
 
 echo "Deploying to Heroku..."
 heroku apps:destroy $appname --confirm $appname
