@@ -8,7 +8,7 @@ echo
 pass=1
 ruby_v=`ruby -v | sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
 if [ $ruby_v != 1.9.3 ]
-	then echo "Error: Ruby 1.9.3 is required, Type 'rvm install 1.9.3.' to install."
+	then echo "Error: Ruby 1.9.3 is required, Type 'rvm install 1.9.3' to install."
 	pass=0
 else
 	echo "Ruby version correct."
