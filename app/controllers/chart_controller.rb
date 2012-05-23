@@ -17,10 +17,8 @@ before_filter :bar_chart
 #  end
   
 def bar_chart
-  if session[:userID] == nil
-#    session[:userID] =  'eDBqNUx1lc'
     session[:userID] = 'yzpkFMqj4A'
-  end
+
   @uid = session[:userID]
   @TruckData = Trucks.where(:UserObjectID => @uid).all[0].SalesData
   @products = @TruckData.first #For initialization purposes only
