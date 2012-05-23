@@ -17,7 +17,7 @@ before_filter :bar_chart
 #  end
   
 def bar_chart
-    session[:userID] = 'yzpkFMqj4A'
+    session[:userID] = 'KwGxIpTN2m'
 
   @uid = session[:userID]
   @TruckData = Trucks.where(:UserObjectID => @uid).all[0].SalesData
