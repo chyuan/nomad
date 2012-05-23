@@ -19,7 +19,7 @@ before_filter :bar_chart
 def bar_chart
   if session[:userID] == nil
 #    session[:userID] =  'eDBqNUx1lc'
-    session[:userID] = '394demouser'
+    session[:userID] = 'yzpkFMqj4A'
   end
   @uid = session[:userID]
   @TruckData = Trucks.where(:UserObjectID => @uid).all[0].SalesData
@@ -111,7 +111,8 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
         end
       end
     if @prodNum != {}
-      insertArray.append(date)
+      datetext = Date.parse(date)    
+      insertArray.append(datetext.strftime("%A %m/%d"))
       for key in @prod
         insertArray.append(@prodNum[key])
         @test = @prodNum
