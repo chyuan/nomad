@@ -21,7 +21,7 @@
 
 <!-- Filter out locations  -->
 <h6 style='position: absolute; left: 480px; top: 120px'>Filtering Options</h6><br>
-<%= form_tag('index', :action => 'bar_chart') do %>
+<%= form_tag('index?uoid=' + @userID, :action => 'bar_chart') do %>
 <!-- Filter out locations  -->
 <fl style='position: absolute; left: 590px; top: 120px'>
 	<br>

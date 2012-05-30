@@ -17,10 +17,14 @@ before_filter :bar_chart
 #  end
   
 def bar_chart
-    session[:userID] = 'KwGxIpTN2m'
-
-  @uid = session[:userID]
-  @TruckData = Trucks.where(:UserObjectID => @uid).all[0].SalesData
+#  session[:userID] = 'yzpkFMqj4A'
+# jIOfeeaVUL
+  @userID = request.GET[:uoid]
+  if @userID == nil
+    @userID = 'yzpkFMqj4A'
+  end
+#  @uid = session[:userID]
+  @TruckData = Trucks.where(:UserObjectID => @userID).all[0].SalesData
   @products = @TruckData.first #For initialization purposes only
   @prodName = {} #The keys are the products ID, the values are the product names
   @location = [] #An array of all the locations
