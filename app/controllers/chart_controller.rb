@@ -22,7 +22,15 @@ def bar_chart
   if @userID == nil
     @userID = 'yzpkFMqj4A'      # Default to Truck 2 if nothing was passed
   end
-  @TruckData = Trucks.where(:UserObjectID => @userID).all[0].SalesData
+  @Truck = Trucks.where(:UserObjectID => @userID).all[0]
+  if @Truck == nil || @Truck.SalesData == nil
+    @DemoMessage = "You are in Demo Mode"
+    @userID = 'yzpkFMqj4A'
+    @TruckData = Trucks.where(:UserObjectID => @userID).all[0].SalesData
+  else
+    @TruckData = @Truck.SalesData
+  end
+
   @products = @TruckData.first #For initialization purposes only
   @prodName = {} #The keys are the products ID, the values are the product names
   @location = [] #An array of all the locations
