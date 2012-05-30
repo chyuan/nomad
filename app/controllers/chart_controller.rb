@@ -20,12 +20,13 @@ def bar_chart
 
   @userID = request.GET[:uid]   # Get user object ID from URL
   if @userID == nil
-    @userID = 'yzpkFMqj4A'      # Default to Truck 2 if nothing was passed
+    @DemoMessage = "You are in Demo Mode"
+    @userID = 'jIOfeeaVUL'      # Default to Truck 2 if nothing was passed
   end
   @Truck = Trucks.where(:UserObjectID => @userID).all[0]
-  if @Truck == nil || @Truck.SalesData == nil
-    @DemoMessage = "You are in Demo Mode"
-    @userID = 'yzpkFMqj4A'
+  if @Truck == nil || @Truck.SalesData == nil     # Default to Truck 2 if there is no Truck or SalesData
+    @DemoMessage = "You are in Demo Mode"         # The demo message will be displayed
+    @userID = 'jIOfeeaVUL'
     @TruckData = Trucks.where(:UserObjectID => @userID).all[0].SalesData
   else
     @TruckData = @Truck.SalesData
