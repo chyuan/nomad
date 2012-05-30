@@ -17,13 +17,11 @@ before_filter :bar_chart
 #  end
   
 def bar_chart
-#  session[:userID] = 'yzpkFMqj4A'
-# jIOfeeaVUL
-  @userID = request.GET[:uoid]
+
+  @userID = request.GET[:uid]   # Get user object ID from URL
   if @userID == nil
-    @userID = 'yzpkFMqj4A'
+    @userID = 'yzpkFMqj4A'      # Default to Truck 2 if nothing was passed
   end
-#  @uid = session[:userID]
   @TruckData = Trucks.where(:UserObjectID => @userID).all[0].SalesData
   @products = @TruckData.first #For initialization purposes only
   @prodName = {} #The keys are the products ID, the values are the product names
