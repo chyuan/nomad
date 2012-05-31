@@ -3,19 +3,6 @@ require 'googlecharts'
 
 before_filter :bar_chart
 
-#def show_data
-#   @platforms = params[:platforms] || []
-#end
-
-
-#def make_graph 
-#	@test = Gchart.line_xy(:size => '500x600', 
-#             :title => "example title",
-#              :bg => 'efefef',
-#              :legend => ['first data set label', 'second data set label'],
-#              :data => [[10, 20, 30, 40, 50], [10, 30, 120, 45, 72]])
-#  end
-  
 def bar_chart
 
   @userID = request.GET[:uid]   # Get user object ID from URL
@@ -156,6 +143,7 @@ end
 
 @chartwidth = 600
 
+# Chart options
   opts = { :width => @chartwidth, :height => 300, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
 #  @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 #  @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)

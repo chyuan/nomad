@@ -8,9 +8,6 @@ src: url('type/cabin.ttf'),
 	 url('cabin.eot');
 }
 
-
-
-
 fl {
 	font-family: Cabin;
 	font-size: 14px;
@@ -29,49 +26,51 @@ fl {
 
 .button {
 	border-top: 1px solid #96d1f8;
-  background: #0e4b73;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0c7ac4), to(#0e4b73));
-  background: -webkit-linear-gradient(top, #0c7ac4, #0e4b73);
-  background: -moz-linear-gradient(top, #0c7ac4, #0e4b73);
-  background: -ms-linear-gradient(top, #0c7ac4, #0e4b73);
-  background: -o-linear-gradient(top, #0c7ac4, #0e4b73);
-  padding: 5.5px 11px;
-  -webkit-border-radius: 16px;
-  -moz-border-radius: 16px;
-  border-radius: 16px;
-  -webkit-box-shadow: black 0 1px 0;
-  -moz-box-shadow: black 0 1px 0;
-  box-shadow: black 0 1px 0;
-  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
-  color: white;
+	background: #0e4b73;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0c7ac4), to(#0e4b73));
+	background: -webkit-linear-gradient(top, #0c7ac4, #0e4b73);
+	background: -moz-linear-gradient(top, #0c7ac4, #0e4b73);
+	background: -ms-linear-gradient(top, #0c7ac4, #0e4b73);
+	background: -o-linear-gradient(top, #0c7ac4, #0e4b73);
+	padding: 5.5px 11px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+	border-radius: 16px;
+	-webkit-box-shadow: black 0 1px 0;
+	-moz-box-shadow: black 0 1px 0;
+	box-shadow: black 0 1px 0;
+	text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+	color: white;
 	font-family:Cabin;
 	font-size:15px;
 	font-weight:normal;
 	padding:6px 24px;
 	text-decoration:none;
 	width: 300px;
-}.button:hover {
+}
+.button:hover {
 	border-top-color: #002c4a;
-	  background: #002c4a;
-	  color: #ccc;
-}.button:active {
+	background: #002c4a;
+	color: #ccc;
+}
+.button:active {
 	position:relative;
 	top:1px;
 }
 
 
 .nav {
-  display: block;
-  position: fixed;
-  z-index: 1;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 30px;
-  font-family: Cabin;
-  color: #fff;
-  background: #333;
-  font-size: 1em;
+	display: block;
+	position: fixed;
+	z-index: 1;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 30px;
+	font-family: Cabin;
+	color: #fff;
+	background: #333;
+	font-size: 1em;
 p {
 	color: #fff;
 	font-size: 23px;

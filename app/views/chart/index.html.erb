@@ -14,7 +14,7 @@
 
 <fl><%= @DemoMessage %></fl>
 
-<div id='area' class='charts'></div>
+<div id='area' class='charts' style="width: 600px"></div>
 <%= render_chart @area, 'area' %>
 
 
@@ -39,7 +39,10 @@
 	<%end%><br><br><%= submit_tag("Save Selection") %></fl>
 <%end%>
 
+
+
+
 <br><br>
-<div id='table2' class='charts'></div>
+<div id='table2' class='charts' style="width: 600px"></div>
 <%= render_chart @table2, 'table2' %>
 </html>
