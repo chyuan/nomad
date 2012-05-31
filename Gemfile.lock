@@ -64,7 +64,7 @@ GEM
     formatador (0.2.3)
     google_visualr (2.1.2)
     googlecharts (1.6.8)
-    heroku (2.26.0)
+    heroku (2.26.3)
       heroku-api (~> 0.2.0)
       launchy (>= 0.3.2)
       netrc (~> 0.7.2)

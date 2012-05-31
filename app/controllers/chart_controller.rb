@@ -121,7 +121,7 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
       end
     if @prodNum != {}
       datetext = Date.parse(date)    
-      insertArray.append(datetext.strftime("%A %m/%d"))
+      insertArray.append(datetext.strftime("%a %m/%d"))
       for key in @prod
         insertArray.append(@prodNum[key])
         @test = @prodNum
@@ -154,60 +154,21 @@ timeparse = Regexp.new(/\d*-\d*-\d*/) #Regular expression that pulls out the str
   avg_table2.set_cell(i,1,temp)
 end
 
+@chartwidth = 600
 
-  opts = { :width => 800, :height => 400, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
+  opts = { :width => @chartwidth, :height => 300, :title => 'Recent Sales Trends', :legend => 'right', vAxis: {title: 'Items Sold', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Date', titleTextStyle: {color: '0c7ac4'}} }
 #  @chart = GoogleVisualr::Interactive::BarChart.new(recent_table, opts)
 #  @line = GoogleVisualr::Interactive::LineChart.new(recent_table, opts)
   @area = GoogleVisualr::Interactive::AreaChart.new(recent_table, opts)
 
-  opts2 = { :width => 800, :height => 400, :title => 'Daily Averages', :legend => 'none', vAxis: {title: 'Daily Avg', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Item', titleTextStyle: {color: '0c7ac4'}} }
+  opts2 = { :width => @chartwidth, :height => 300, :title => 'Daily Averages', :legend => 'none', vAxis: {title: 'Daily Avg', titleTextStyle: {color: '#0c7ac4'}}, hAxis: {title: 'Item', titleTextStyle: {color: '0c7ac4'}} }
   @table2 = GoogleVisualr::Interactive::ColumnChart.new(avg_table2, opts2)
 
   table_opts   = { :showRowNumber => false}
   @avgtable = GoogleVisualr::Interactive::Table.new(avg_table2, table_opts)
 #  @table = GoogleVisualr::Interactive::Table.new(recent_table, table_opts)
   
-  
 
 
 end
 end
-
-#Code repository SO GHETTO
-#This makes the prodNum dictionary (ID => Items Sold)
-=begin
-@TruckData.each do |stop|
-  if (@loc.include? stop[1])
-    stop.each_with_index do |product, index|
-      if (index > 1)
-        if @prodNum.has_key?(product[1])
-          @prodNum[product[1]] = @prodNum[product[1]] + product[2]
-        else
-          @prodNum[product[1]] = product[2]
-        end
-      end
-    end
-  end
-end
-=end
-
-=begin
-  #add elements to our dictionary
-  if (@loc.include? stop[1])
-    stop.each_with_index do |product, index|
-      if (index > 1)
-        @prodNum[product[1]] = @prodNum[product[1]] + product[2] 
-      end
-    end
-  end
-else
-  previousdate = date
-  #remake dictionary
-  if (@loc.include? stop[1])
-    stop.each_with_index do |product, index|
-      if (index > 1)
-          @prodNum[product[1]] = product[2]
-      end
-    end
-  end
-=end #might be off by an end
