@@ -22,15 +22,16 @@
 <!-- Filter out locations  -->
 <%= form_tag('index?uid=' + @userID, :action => 'bar_chart') do %>
 <!-- Filter out locations  -->
-<fl style='position: fixed; left: 620px; top: 80px'>
+<fl style='position: fixed; left: 620px; top: 70px'>
+	<fl style='font-size:23px'>Filtering Options</fl><br>
 	<br>
-	<label for="Locations[]">Locations:</label><br>
+	<fl style ='font-size:20px; color: #0c7ac4'><label for="Locations[]">Locations:</label></fl><br>
 	<% @location.each do |location| %>
 		<br><%= check_box_tag 'Locations[]', location, (@loc.include? location) %> <%= location %>
 	<%end%><br><br><%= submit_tag("Save Selection") %>
 <!-- Filter out products  -->
 <br><br>
-    <label for="products[]">Menu Items:</label><br>
+    <fl style ='font-size:20px; color: #0c7ac4'><label for="products[]">Menu Items:</label></fl><br>
 	<% @products.each_with_index do |product, index| %>
 		<% if (index>1) then %><br>
 			<%= check_box_tag 'products[]', product[1], (@prod.include? product[1]) %> <%= product[0] %>
