@@ -8,76 +8,13 @@ src: url('type/cabin.ttf'),
 	 url('cabin.eot');
 }
 
-h {
-  color: #000;
-  font-family: Cabin;
-  font-size: 30px;
-  font-weight: bold;
-  display: inline;
-}
 
-
-h1 {
-  color: #0c7ac4;
-  font-family: Cabin;
-  font-size: 24px;
-  margin-bottom: -28px;
-  font-weight: bold;
-  display: inline;
-  float: left;
-  margin-left: 300px;
-}
-
-
-h6 {
-  color: #000;
-  font-family: Cabin;
-  font-size: 24px;
-  margin-bottom: -28px;
-  font-weight: bold;
-  margin-top: -7px;
-  margin-left: 400px;
-}
-
-h4 {
-  color: #0c7ac4;
-  font-family: Cabin;
-  font-size: 24px;
-  margin-bottom: -28px;
-  font-weight: bold;
-  float: left;
-  margin-left: 100px;
-}
-
-h2 {
-  color: #000000;
-  font-family: Cabin;
-  font-size: 16px;
-  margin-bottom: -28px;
-  text-transform: none;
-  float: left;
-  margin-left: 300px;
-  display: inline;
-}
-
-h3 {
-  color: #000000;
-  font-family: Cabin;
-  font-size: 16px;
-  margin-bottom: -28px;
-  text-transform: none;
-  float: left;
-  margin-left: 100px;
-  display: inline;
-}
-
-h5 {
-	margin-left: 95px;
-}
 
 
 fl {
 	font-family: Cabin;
+	font-size: 14px;
+	width: 165px;
 }
 
 .nav a:link {color: #FFFFFF; font-family: Cabin; text-decoration: none; font-size: 17px;}
@@ -123,14 +60,15 @@ fl {
 
 .nav {
   display: block;
-  position: absolute;
+  position: fixed;
+  z-index: 1;
   left: 0px;
   top: 0px;
   width: 100%;
   height: 30px;
   font-family: Cabin;
   color: #fff;
-  background: #0c7ac4;
+  background: #333;
   font-size: 1em;
 p {
 	color: #fff;
